@@ -1,12 +1,17 @@
-import React from 'react';
-import { ITodoItem } from 'interfaces/TodoItem.interface';
+import { FC } from 'react';
+import { ITodoItem } from 'types/TodoItem.interface';
 
-export const TodoItem: React.FC<ITodoItem> = props => {
-  const { title } = props;
+interface IProps {
+  todo: ITodoItem;
+  onDeleteTodo: () => void;
+}
 
-  return (
-    <div>
-      <span>{title}</span>
-    </div>
-  );
-};
+export const TodoItem: FC<IProps> = ({ todo: { id, title }, onDeleteTodo }) => (
+  <div>
+    <p>{id}</p>
+    <p>{title}</p>
+    <button type="button" onClick={onDeleteTodo}>
+      Delete
+    </button>
+  </div>
+);
