@@ -7,5 +7,3 @@ export const App: React.FC = () => {
 };
 
 // ideas
-
-// path "../../../" - congig?
