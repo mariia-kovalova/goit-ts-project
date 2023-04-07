@@ -1,6 +1,6 @@
 import React from 'react';
-import { ITodoList } from '../../interfaces/TodoList.interface';
-import { TodoItem } from '../TodoItem/TodoItem';
+import { ITodoList } from 'interfaces/TodoList.interface';
+import { TodoItem } from 'components/TodoItem';
 
 export const TodoList: React.FC<ITodoList> = props => {
   const { items } = props;
