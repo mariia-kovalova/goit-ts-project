@@ -17,11 +17,16 @@ export const TodoList: FC = () => {
   const showTodoList = items.length !== 0;
 
   return (
-    <Container>
+    <Container padding="20px">
       {showTodoList && (
-        <List display="flex" flexDirection="column" gap="10px">
+        <List display="flex" flexDirection="column" gap="5px">
           {items.map(todo => (
-            <ListItem key={todo.id}>
+            <ListItem
+              key={todo.id}
+              padding="5px 10px"
+              border="1px solid black"
+              borderRadius="4px"
+            >
               <TodoItem todo={todo} />
             </ListItem>
           ))}
