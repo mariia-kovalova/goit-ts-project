@@ -14,7 +14,7 @@ export const TodoList: FC = () => {
     dispatch(getTodos());
   }, [dispatch]);
 
-  const showTodoList = items.length !== 0;
+  const showTodoList = items.length !== 0 && !error;
 
   return (
     <Container padding="20px">

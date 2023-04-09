@@ -11,5 +11,5 @@ export const App: FC = () => {
   );
 };
 
-// chakra
-// antd - for the js variant
+// chakra:
+// loader
