@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/goit-ts-project/static/js/main.3705500b.js",
+    "main.js": "/goit-ts-project/static/js/main.d6c93925.js",
     "index.html": "/goit-ts-project/index.html",
-    "main.3705500b.js.map": "/goit-ts-project/static/js/main.3705500b.js.map"
+    "main.d6c93925.js.map": "/goit-ts-project/static/js/main.d6c93925.js.map"
   },
   "entrypoints": [
-    "static/js/main.3705500b.js"
+    "static/js/main.d6c93925.js"
   ]
 }
