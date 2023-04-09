@@ -1,21 +1,28 @@
+import { nanoid } from '@reduxjs/toolkit';
+import { useAppDispatch } from 'hooks/useRedux';
 import { FC, ChangeEvent, FormEvent, useState } from 'react';
-import { ITodoItem } from 'types/TodoItem.interface';
+import { addTodo } from 'redux/todos/operations';
+import { OnlyTitle } from 'types/TodoItem.interface';
 
-interface IProps {
-  onAddTodo: (todo: ITodoItem) => void;
-}
-
-type OnlyTitle = Pick<ITodoItem, 'title'>;
+import {
+  Container,
+  FormControl,
+  FormLabel,
+  Input,
+  Button,
+  FormHelperText,
+} from '@chakra-ui/react';
 
 const initislState = { title: '' };
 
-export const AddTodoForm: FC<IProps> = ({ onAddTodo }) => {
+const taskId = nanoid();
+
+export const AddTodoForm: FC = () => {
   const [todo, setTodo] = useState<Partial<OnlyTitle>>(initislState);
+  const dispatch = useAppDispatch();
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setTodo({
-      title: e.target.value.trim(),
-    });
+    setTodo({ title: e.target.value });
   };
 
   const handleSubmit = (e: FormEvent) => {
@@ -23,21 +30,30 @@ export const AddTodoForm: FC<IProps> = ({ onAddTodo }) => {
     if (!todo.title || todo.title === '') {
       return alert('This field is required.');
     }
-    onAddTodo({ id: Math.random().toString(), title: todo.title });
+    dispatch(
+      addTodo({
+        id: taskId,
+        title: todo.title,
+        isCompleted: false,
+      })
+    );
     setTodo(initislState);
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label htmlFor="title">Title</label>
-      <input
-        type="text"
-        name="title"
-        id="title"
-        onChange={handleChange}
-        value={todo.title}
-      />
-      <button type="submit">Add todo</button>
-    </form>
+    <Container>
+      <FormControl onSubmit={handleSubmit}>
+        <FormLabel htmlFor="title">Title</FormLabel>
+        <Input
+          type="text"
+          name="title"
+          id="title"
+          onChange={handleChange}
+          value={todo.title}
+        />
+        <FormHelperText>Enter your todo</FormHelperText>
+        <Button type="submit">Add todo</Button>
+      </FormControl>
+    </Container>
   );
 };
